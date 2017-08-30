@@ -7,7 +7,6 @@ import java.nio.charset._
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.SparkConf
-import org.apache.spark.sql._
 
 import org.elasticsearch.spark._ 
 
@@ -20,9 +19,10 @@ object ESExample {
     val sc = new SparkContext(conf)
     val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 
-    val src = "/work/00946/zzhang/wrangler/health-website-json-4"
-    val df = sqlContext.read.json(src)
-    df.count
+    val src = args(0)
+    val dst = args(1)
+    val rdd = sc.textFile(src)
+    rdd.saveJsonToEs(dst)
   }
 
 
