@@ -1,4 +1,4 @@
-ElasticSearch Example with Spark
+The JSON version of the ElasticSearch Example with Spark
 =====
 This is the instruction of using Spark to ingest indices to ElasticSearch on TACC Wrangler.
 

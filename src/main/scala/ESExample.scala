@@ -7,6 +7,7 @@ import java.nio.charset._
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.SparkConf
+import org.apache.spark.sql._
 
 import org.elasticsearch.spark._ 
 
@@ -14,6 +15,18 @@ case class Item(content: String)
 
 object ESExample {
   def main(args: Array[String]) {
+    val conf = new SparkConf().setAppName("ESExample");
+    conf.set("es.index.auto.create", "true");
+    val sc = new SparkContext(conf)
+    val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+
+    val src = "/work/00946/zzhang/wrangler/health-website-json-4"
+    val df = sqlContext.read.json(src)
+    df.count
+  }
+
+
+/*  def main(args: Array[String]) {
     val conf = new SparkConf().setAppName("ESExample");
     conf.set("es.index.auto.create", "true");
 
@@ -56,4 +69,5 @@ object ESExample {
 
   def decode(charset: Charset = StandardCharsets.UTF_8)(bytes: Array[Byte]) = 
     new String(bytes, StandardCharsets.UTF_8)
+*/
 }
