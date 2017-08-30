@@ -21,7 +21,7 @@ This will build the application, the input data path is hard-coded in the source
 
 In the same directory, run
 
-   $ spark-submit --jars /home/00946/zzhang/.m2/repository/org/elasticsearch/elasticsearch-spark-13_2.10/5.0.0-beta1/elasticsearch-spark-13_2.10-5.0.0-beta1.jar --class "ESExample" --master yarn --deploy-mode client target/ESExample-1.0-SNAPSHOT.jar
+   $ spark-submit --jars /home/00946/zzhang/.m2/repository/org/elasticsearch/elasticsearch-spark-13_2.10/5.0.0-beta1/elasticsearch-spark-13_2.10-5.0.0-beta1.jar --class "ESExample" --master yarn --deploy-mode client target/ESExample-1.0-SNAPSHOT.jar $INPUT_DIR $OUTPUT_INDEX
 
 Please note: the elasticsearch-spark-13_2.10-5.0.0-beta1.jar is automatically downloaded to your home directory if the compilation succeeded. Change the path to point to your local copy.
 
